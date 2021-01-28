@@ -1,25 +1,7 @@
 #!/usr/bin/php -q
 <?php
 /*
-  +----------------------------------------------------------------------+
-  | Copyright (c) 1997-2021 The PHP Group                                |
-  +----------------------------------------------------------------------+
-  | This source file is subject to version 3.01 of the PHP license,      |
-  | that is bundled with this package in the file LICENSE, and is        |
-  | available through the world-wide-web at the following url:           |
-  | http://www.php.net/license/3_01.txt.                                 |
-  | If you did not receive a copy of the PHP license and are unable to   |
-  | obtain it through the world-wide-web, please send a note to          |
-  | license@php.net so we can mail you a copy immediately.               |
-  +----------------------------------------------------------------------+
-  | Based in earlier CVS/SVN revcheck script by:                         |
-  |          Thomas Sch�fbeck <tom@php.net>                              |
-  |          Gabor Hojtsy <goba@php.net>                                 |
-  |          Mark Kronsbein <mk@php.net>                                 |
-  |          Jan Fabry <cheezy@php.net>                                  |
-  +----------------------------------------------------------------------+
-  | Authors: André Luis Ferreira da Silva Bacci <ae@php.net>             |
-  +----------------------------------------------------------------------+
+    //TODO License notice goes here
 */
 
 //namespace Phpdoc\Docbase\Scripts;
@@ -299,9 +281,10 @@ function print_html_header( $lang )
 body { margin:0px 0px 0px 0px; background-color:#F0F0F0; font-family: sans-serif; text-align: center; }
 a { color: black; }
 h1 { color: #FFFFFF; }
-table { margin-left: auto; margin-right: auto; text-align: left; }
+table { margin-left: auto; margin-right: auto; text-align: left; border-spacing: 1px; }
 th { color: white; background-color: #666699; padding: 0.2em; text-align: center; vertical-align: middle; }
 td { padding: 0.2em 0.3em; }
+.o { white-space: nowrap; overflow: hidden; max-width: 3em; }
 .c { text-align: center; }
 .r { text-align: right; }
 .b { font-weight: bold; }
@@ -331,6 +314,7 @@ function print_html_menu( $href )
 
 <a id="$href"/>
 <p><a href="#intro">Introduction</a> | <a href="#translators">Translators</a> | <a href="#filesummary">File summary</a> | <a href="#files">Files</a> | <a href="#wip">Work in progress</a> | <a href="#revtag">Revision tag problem</a> | <a href="#untranslated">Untranslated files</a> | <a href="#notinen">Not in EN tree</a></p>
+
 HTML;
 }
 
@@ -396,8 +380,8 @@ HTML;
         $nm = "<a href='$l1'>{$en->name}</a> <a href='$l2' title='HTML side by side'>(h)</a>";
         if ( $en->syncStatus == FileStatusEnum::RevTagProblem )
             $nm = $en->name;
-        $h1 = substr( $en->hash , 0 , 6 );
-        $h2 = substr( $tr->hash , 0 , 6 );
+        $h1 = "<a href='http://git.php.net/?p=doc/en.git;a=blob;f=$key;hb={$en->hash}'>{$en->hash}</a>";
+        $h2 = "<a href='http://git.php.net/?p=doc/en.git;a=blob;f=$key;hb={$tr->hash}'>{$tr->hash}</a>";
         $s1 = $en->size < 1024 ? 1 : floor( $en->size / 1024 );
         $s2 = $tr->size < 1024 ? 1 : floor( $tr->size / 1024 );
         $s3 = $s2 - $s1;
@@ -409,8 +393,8 @@ HTML;
         print <<<HTML
  <tr class="$bg">
   <td class="l">$nm</td>
-  <td class="c">$h1</td>
-  <td class="c">$h2</td>
+  <td class="o">$h1</td>
+  <td class="o">$h2</td>
   <td class="r">$s1</td>
   <td class="r">$s2</td>
   <td class="r">$s3</td>
