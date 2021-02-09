@@ -1,7 +1,25 @@
 #!/usr/bin/php -q
 <?php
 /*
-    //TODO License notice goes here
+  +----------------------------------------------------------------------+
+  | PHP Version 4                                                        |
+  +----------------------------------------------------------------------+
+  | Copyright (c) 1997-2011 The PHP Group                                |
+  +----------------------------------------------------------------------+
+  | This source file is subject to version 3.0 of the PHP license,       |
+  | that is bundled with this package in the file LICENSE, and is        |
+  | available through the world-wide-web at the following url:           |
+  | http://www.php.net/license/3_0.txt.                                  |
+  | If you did not receive a copy of the PHP license and are unable to   |
+  | obtain it through the world-wide-web, please send a note to          |
+  | license@php.net so we can mail you a copy immediately.               |
+  +----------------------------------------------------------------------+
+  | Authors:    Thomas Sch�fbeck <tom@php.net>                           |
+  |             Gabor Hojtsy <goba@php.net>                              |
+  |             Mark Kronsbein <mk@php.net>                              |
+  |             Jan Fabry <cheezy@php.net>                               |
+  |             André L F S Bacci <ae@php.net>                           |
+  +----------------------------------------------------------------------+
 */
 
 //namespace Phpdoc\Docbase\Scripts;
@@ -375,8 +393,8 @@ HTML;
             case FileStatusEnum::TranslatedCritial: $bg = 'bgred'   ; break;
             default:                                $bg = 'bggray'  ; break;
         }
-        $l1 = "http://bacci.com.br/andre/phpdoc/revcheckdiff.php?f={$key}&h1={$en->hash}&h2={$tr->hash}&mode=text";
-        $l2 = "http://bacci.com.br/andre/phpdoc/revcheckdiff.php?f={$key}&h1={$en->hash}&h2={$tr->hash}&mode=html";
+        $l1 = "http://bacci.com.br/andre/phpdoc/revcheckdiff.php?f={$key}&h1={$tr->hash}&h2={$en->hash}&mode=text";
+        $l2 = "http://bacci.com.br/andre/phpdoc/revcheckdiff.php?f={$key}&h1={$tr->hash}&h2={$en->hash}&mode=html";
         $nm = "<a href='$l1'>{$en->name}</a> <a href='$l2' title='HTML side by side'>(h)</a>";
         if ( $en->syncStatus == FileStatusEnum::RevTagProblem )
             $nm = $en->name;
